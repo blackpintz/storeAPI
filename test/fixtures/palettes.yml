@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clothing_item: one
+  color: one
+
+two:
+  clothing_item: two
+  color: two
