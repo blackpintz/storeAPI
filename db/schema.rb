@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_180739) do
+ActiveRecord::Schema.define(version: 2020_09_03_182313) do
 
   create_table "clothing_items", force: :cascade do |t|
     t.string "name"
@@ -50,8 +50,25 @@ ActiveRecord::Schema.define(version: 2020_09_03_180739) do
     t.index ["rate_id"], name: "index_ratings_on_rate_id"
   end
 
+  create_table "size_charts", force: :cascade do |t|
+    t.integer "clothing_item_id", null: false
+    t.integer "size_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["clothing_item_id"], name: "index_size_charts_on_clothing_item_id"
+    t.index ["size_id"], name: "index_size_charts_on_size_id"
+  end
+
+  create_table "sizes", force: :cascade do |t|
+    t.integer "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "palettes", "clothing_items"
   add_foreign_key "palettes", "colors"
   add_foreign_key "ratings", "clothing_items"
   add_foreign_key "ratings", "rates"
+  add_foreign_key "size_charts", "clothing_items"
+  add_foreign_key "size_charts", "sizes"
 end
