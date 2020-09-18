@@ -1,0 +1,607 @@
+Started GET "/" for ::1 at 2020-09-18 10:16:23 +0100
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (6.0.3.2) lib/active_record/migration.rb:586:in `check_pending!'
+activerecord (6.0.3.2) lib/active_record/migration.rb:564:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClothingItems (20200901182857)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "clothing_items" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "price" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200901182857"]]
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRates (20200902171256)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "rates" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "number" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200902171256"]]
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRatings (20200902171417)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "ratings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "rate_id" integer NOT NULL, "clothing_item_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_28eb39d94a"
+FOREIGN KEY ("rate_id")
+  REFERENCES "rates" ("id")
+, CONSTRAINT "fk_rails_a6fc6067f2"
+FOREIGN KEY ("clothing_item_id")
+  REFERENCES "clothing_items" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_ratings_on_rate_id" ON "ratings" ("rate_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_ratings_on_clothing_item_id" ON "ratings" ("clothing_item_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200902171417"]]
+  [1m[35m (11.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateColors (20200903180647)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "colors" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "hex_code" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200903180647"]]
+  [1m[35m (10.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePalettes (20200903180739)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "palettes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "clothing_item_id" integer NOT NULL, "color_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_e74a80f922"
+FOREIGN KEY ("clothing_item_id")
+  REFERENCES "clothing_items" ("id")
+, CONSTRAINT "fk_rails_aec041fd36"
+FOREIGN KEY ("color_id")
+  REFERENCES "colors" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_palettes_on_clothing_item_id" ON "palettes" ("clothing_item_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_palettes_on_color_id" ON "palettes" ("color_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200903180739"]]
+  [1m[35m (7.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSizes (20200903182240)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "sizes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "size" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200903182240"]]
+  [1m[35m (8.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateSizeCharts (20200903182313)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "size_charts" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "clothing_item_id" integer NOT NULL, "size_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_f95158ec46"
+FOREIGN KEY ("clothing_item_id")
+  REFERENCES "clothing_items" ("id")
+, CONSTRAINT "fk_rails_5861239bd3"
+FOREIGN KEY ("size_id")
+  REFERENCES "sizes" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_size_charts_on_clothing_item_id" ON "size_charts" ("clothing_item_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_size_charts_on_size_id" ON "size_charts" ("size_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200903182313"]]
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-09-18 09:16:44.554670"], ["updated_at", "2020-09-18 09:16:44.554670"]]
+  [1m[35m (11.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2020-09-18 10:16:49 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/modupe/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/modupe/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 13.2ms | Allocations: 201)
+Completed 200 OK in 28ms (Views: 15.1ms | ActiveRecord: 0.0ms | Allocations: 1372)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 10:30:04 +0100
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.4ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 39ms (Views: 14.2ms | ActiveRecord: 9.0ms | Allocations: 7987)
+
+
+Started GET "/clothing_items/new" for ::1 at 2020-09-18 10:32:54 +0100
+  
+AbstractController::ActionNotFound (The action 'new' could not be found for ClothingItemsController):
+  
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/clothing_items/index" for ::1 at 2020-09-18 10:33:00 +0100
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for ClothingItemsController):
+  
+actionpack (6.0.3.2) lib/abstract_controller/base.rb:131:in `process'
+actionview (6.0.3.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.2) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.2) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.2.3) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/http/content_security_policy.rb:18:in `call'
+rack (2.2.3) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.3) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/cookies.rb:648:in `call'
+activerecord (6.0.3.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+web-console (4.0.4) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.0.4) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.0.4) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/clothing_items" for ::1 at 2020-09-18 10:33:04 +0100
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.08ms)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.2ms | Allocations: 1103)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mClothingItem Load (0.4ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClothingItem Create (0.7ms)[0m  [1m[32mINSERT INTO "clothing_items" ("name", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "fancy"], ["price", 5], ["created_at", "2020-09-18 09:50:52.950425"], ["updated_at", "2020-09-18 09:50:52.950425"]]
+  [1m[35m (9.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClothingItem Create (0.9ms)[0m  [1m[32mINSERT INTO "clothing_items" ("name", "price", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "sassy"], ["price", 10], ["created_at", "2020-09-18 09:50:52.964229"], ["updated_at", "2020-09-18 09:50:52.964229"]]
+  [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mClothingItem Load (0.3ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/clothing_items" for ::1 at 2020-09-18 10:51:22 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.4ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.4ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.8ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.3ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.3ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.1ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.1ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (158.73ms)
+Completed 200 OK in 285ms (Views: 271.4ms | ActiveRecord: 9.8ms | Allocations: 41181)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:07:28 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.4ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.4ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (2.5ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.4ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.2ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.2ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.4ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (100.53ms)
+Completed 200 OK in 159ms (Views: 122.2ms | ActiveRecord: 4.4ms | Allocations: 30765)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:07:37 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.1ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 3005)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:07:47 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.3ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.3ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.5ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.3ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (1.4ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.2ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.2ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (75.06ms)
+Completed 200 OK in 104ms (Views: 82.6ms | ActiveRecord: 9.8ms | Allocations: 32508)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:09:03 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.3ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.3ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.4ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.3ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.1ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (18.9ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (2.8ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (192.53ms)
+Completed 200 OK in 239ms (Views: 193.6ms | ActiveRecord: 33.5ms | Allocations: 32467)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:09:07 +0100
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.3ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.3ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.2ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.4ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.1ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.2ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.1ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (42.47ms)
+Completed 200 OK in 49ms (Views: 45.7ms | ActiveRecord: 1.6ms | Allocations: 10533)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:10:01 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.5ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.2ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.4ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.3ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.1ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.3ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.4ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (103.15ms)
+Completed 200 OK in 133ms (Views: 113.6ms | ActiveRecord: 8.2ms | Allocations: 32451)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:31:54 +0100
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.3ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.3ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.5ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.3ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.2ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.2ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.1ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (86.63ms)
+Completed 200 OK in 129ms (Views: 110.8ms | ActiveRecord: 2.0ms | Allocations: 30666)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:34:36 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.5ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 1.7ms | Allocations: 9884)
+
+
+  
+NoMethodError (undefined method `root=' for ClothingItemSerializer:Class):
+  
+app/serializers/clothing_item_serializer.rb:3:in `<class:ClothingItemSerializer>'
+app/serializers/clothing_item_serializer.rb:1:in `<main>'
+app/controllers/clothing_items_controller.rb:6:in `index'
+Started GET "/" for ::1 at 2020-09-18 11:35:56 +0100
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/modupe/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/modupe/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.5ms | Allocations: 191)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.0ms | Allocations: 844)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:36:02 +0100
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.2ms)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.2ms | Allocations: 1454)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:36:05 +0100
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.7ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.2ms | Allocations: 1342)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:36:07 +0100
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.67ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 1342)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:36:10 +0100
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.53ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 1342)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:36:23 +0100
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.5ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (2.1ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.2ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.2ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.2ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.2ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (77.92ms)
+Completed 200 OK in 109ms (Views: 87.7ms | ActiveRecord: 10.2ms | Allocations: 32491)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:36:33 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 3.2ms | Allocations: 10021)
+
+
+  
+NoMethodError (undefined method `root=' for ClothingItemSerializer:Class):
+  
+app/serializers/clothing_item_serializer.rb:3:in `<class:ClothingItemSerializer>'
+app/serializers/clothing_item_serializer.rb:1:in `<main>'
+app/controllers/clothing_items_controller.rb:6:in `index'
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:43:26 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.2ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.2ms | Allocations: 9485)
+
+
+  
+NoMethodError (undefined method `root=' for ClothingItemSerializer:Class):
+  
+app/serializers/clothing_item_serializer.rb:3:in `<class:ClothingItemSerializer>'
+app/serializers/clothing_item_serializer.rb:1:in `<main>'
+app/controllers/clothing_items_controller.rb:6:in `index'
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:45:52 +0100
+  
+ArgumentError ('ClothingItems' is not a supported controller name. This can lead to potential routing problems. See https://guides.rubyonrails.org/routing.html#specifying-a-controller-to-use):
+  
+config/routes.rb:3:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:46:07 +0100
+  
+ArgumentError ('clothingItems' is not a supported controller name. This can lead to potential routing problems. See https://guides.rubyonrails.org/routing.html#specifying-a-controller-to-use):
+  
+config/routes.rb:3:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:46:23 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.6ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 1.9ms | Allocations: 9844)
+
+
+  
+NoMethodError (undefined method `root=' for ClothingItemSerializer:Class):
+  
+app/serializers/clothing_item_serializer.rb:3:in `<class:ClothingItemSerializer>'
+app/serializers/clothing_item_serializer.rb:1:in `<main>'
+app/controllers/clothing_items_controller.rb:6:in `index'
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:48:16 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.4ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.5ms | Allocations: 9904)
+
+
+  
+NoMethodError (undefined method `root' for ClothingItemSerializer:Class):
+  
+app/serializers/clothing_item_serializer.rb:3:in `<class:ClothingItemSerializer>'
+app/serializers/clothing_item_serializer.rb:1:in `<main>'
+app/controllers/clothing_items_controller.rb:6:in `index'
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:55:56 +0100
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.3ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.3ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.3ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (3.0ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (4.6ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.2ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.2ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (170.11ms)
+Completed 200 OK in 269ms (Views: 231.1ms | ActiveRecord: 15.9ms | Allocations: 41666)
+
+
+Started GET "/clothing_items" for ::1 at 2020-09-18 11:56:31 +0100
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ClothingItemsController#index as HTML
+  [1m[36mClothingItem Load (0.4ms)[0m  [1m[34mSELECT "clothing_items".* FROM "clothing_items"[0m
+  ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.3ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.3ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.5ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mRate Load (0.2ms)[0m  [1m[34mSELECT "rates".* FROM "rates" INNER JOIN "ratings" ON "rates"."id" = "ratings"."rate_id" WHERE "ratings"."rate_id" = ?[0m  [["rate_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mColor Load (0.5ms)[0m  [1m[34mSELECT "colors".* FROM "colors" INNER JOIN "palettes" ON "colors"."id" = "palettes"."color_id" WHERE "palettes"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mSize Load (0.3ms)[0m  [1m[34mSELECT "sizes".* FROM "sizes" INNER JOIN "size_charts" ON "sizes"."id" = "size_charts"."size_id" WHERE "size_charts"."clothing_item_id" = ?[0m  [["clothing_item_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clothing_items_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Json (104.63ms)
+Completed 200 OK in 196ms (Views: 156.8ms | ActiveRecord: 10.7ms | Allocations: 38712)
+
+
