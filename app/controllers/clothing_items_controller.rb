@@ -8,8 +8,12 @@ class ClothingItemsController < ApplicationController
 
    def show
     render json: ClothingItem.find(params[:id])
-    end
-           
+   end
+   
+   def search
+       foundItem = ClothingItem.new_search(params[:search]).first
+       render json: foundItem
+   end
 end
 
 
